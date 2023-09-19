@@ -1,0 +1,30 @@
+#include <iostream>
+using namespace std;
+int main() {
+    int t,five,ten, Chocolate_Amount;
+    cout<<"Enter The Total No. Of Testcases: ";
+    cin>>t;
+    while(t--){
+    	cout<<"\nEnter The Total No. Of Five RS. Coin:  ";
+    	cin>>five;
+    	cout<<"Enter The Total No. Of Ten RS. coin: ";
+    	cin>>ten;
+   	 cout<<"Enter The Amount Of One Chocolate: ";
+   	 cin>>Chocolate_Amount;
+   	 int total=five*5 + ten*10 ;
+    
+    	int count=0;    
+    	if(total >= Chocolate_Amount){
+        	while (total >= Chocolate_Amount){
+            	count++;  
+           	 total-=Chocolate_Amount;
+       	 }
+        cout<<"Total No. Of Chocolate You Can Buy is: "<<count<<endl;
+   	 }
+    	else
+        	cout<<"Total No. Of Chocolate You Can Buy Is: "<<count<<endl;
+        
+    }
+    return 0;
+} 
+    
