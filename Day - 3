@@ -1,0 +1,22 @@
+#include<iostream>
+using namespace std;
+
+int main()
+{
+    int t, student, chair;
+    cout << "Enter No. of Test Cases: ";
+    cin>>t;
+    while(t--){
+        cout<<"\nEnter Total No. of student: ";
+        cin>>student;
+        cout<<"Enter total No. of Chairs: ";
+        cin>>chair;
+        
+        if(student <= chair){
+            cout<<"Chairs Needed are: 0"<<endl;
+        }
+        else
+        cout<<"Chairs Needed are: "<<student-chair<<endl;
+    }
+    return 0;
+}
