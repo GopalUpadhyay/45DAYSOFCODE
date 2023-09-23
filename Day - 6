@@ -1,0 +1,29 @@
+#include<iostream>
+using namespace std;
+
+int
+main (){
+     int t;
+     cout<<"Enter No. Of Test cases: ";
+     cin >> t;
+     
+     while (t--){
+         int size,count=0;
+         cout<<"\nEnter size of No: ";
+         cin>>size;
+         char arr[size];
+         cout<<"Enter NUMBER: ";
+         cin>>arr;
+         for(int i=0;i<size;i++){
+             if(arr[i]=='5'||arr[i]=='0'){
+                 cout<<"yes"<<endl;
+                 break;
+             }
+             count++;
+         }
+         if(count==size){
+            cout<<"no"<<endl;
+         }
+    }
+    return 0;
+}
