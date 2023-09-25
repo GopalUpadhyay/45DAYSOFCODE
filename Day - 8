@@ -1,0 +1,43 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int t,n,H[100],W[100],B,p[100],area[100],count=0;
+    cout<<"\nEnter the test case: ";
+    cin>>t;
+    while (t--){
+        cout<<"\nEnter the time input will be given: ";
+        cin>>n>>B;
+        for(int i=0;i<n;i++){
+            cout<<"\nEnter the length & bidth & prize ";
+            cin>>H[i]>>W[i]>>p[i];
+            area[i]= H[i]*W[i];
+            count++; 
+            
+            if(p[i] <= B){
+                area[i] = area[i];
+            }
+            else{
+                area[i] = 0;
+            }
+        }
+        int maxi = INT_MIN;
+        for(int i=0;i<count;i++){
+        if(p[i] <= B){
+            if(area[i] != 0){
+               if(area[i] >= maxi) {
+                   maxi = area[i];
+               }
+            }
+        }
+    }    
+        if(maxi != INT_MIN){
+            cout<<maxi<<endl;
+        }
+        else{
+            cout<<"No Tablet"<<endl;
+        }
+    }
+ 
+    return 0;
+}
