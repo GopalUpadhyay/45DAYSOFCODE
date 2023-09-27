@@ -6,18 +6,12 @@ int main() {
 	cin>>T;
 	while(T--){
 	   cin>>A>>B>>C>>D>>E;
-	   if((A+C)<=D && B<=E){
+	   if( ((A+C)<=D && B<=E) || ((A+B)<=D && C<=E) || ((B+C)<=D && A<=E) ){
 	       cout<<"Yes"<<endl;
 	    }
-	    else if((A+B)<=D && C<=E){
-	        cout<<"Yes"<<endl;
-	    }
-	    else if((B+C)<=D && A<=E){
-	        cout<<"Yes"<<endl;
-	    }
-	    else{
+	   else{
 	        cout<<"NO"<<endl;
-	    }
+	   }
 	}
 	return 0;
 }
