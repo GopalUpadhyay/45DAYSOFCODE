@@ -1,4 +1,7 @@
 #include <iostream>
+#include <bits/stdc++.h>
+#include <algorithm>
+
 using namespace std;
 
 int main(){
@@ -6,26 +9,26 @@ int main(){
 	int t;
 	cin>>t;
 	while(t--){
-	    int max=-1,N,count=0;
+	    int N,count=0,temp=0;
 	    cin>>N;
 	    int arr[N];
 	    for(int i=0;i<N;i++){
 	        cin>>arr[i];
 	    }
+	    
+		sort(arr,arr+N);
+	    
 	    for(int i=0;i<N;i++){
-	        count=0;
-	        for(int j=0;j<N;j++){
-	            if(arr[i] == arr[j]){
-	                count++;
-	            }
+	       if(arr[i] == arr[i+1]){
+	        count++;
 	        }
-	        if(max < count){
-	        max=count;
+	        else{
+	            temp=max(temp,count);
+	            count=0;
 	        }
 	    }
-
-	    cout<<N-max<<endl;
-	}
+	    cout<<N-1-temp<<endl;
+    }
 
 	return 0;
 }
