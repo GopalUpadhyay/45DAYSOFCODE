@@ -1,0 +1,31 @@
+#include <iostream>
+using namespace std;
+
+int main(){
+	// your code goes here
+	int t;
+	cin>>t;
+	while(t--){
+	    int max=-1,N,count=0;
+	    cin>>N;
+	    int arr[N];
+	    for(int i=0;i<N;i++){
+	        cin>>arr[i];
+	    }
+	    for(int i=0;i<N;i++){
+	        count=0;
+	        for(int j=0;j<N;j++){
+	            if(arr[i] == arr[j]){
+	                count++;
+	            }
+	        }
+	        if(max < count){
+	        max=count;
+	        }
+	    }
+
+	    cout<<N-max<<endl;
+	}
+
+	return 0;
+}
