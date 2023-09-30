@@ -1,0 +1,15 @@
+#include <iostream>
+using namespace std;
+int main() {
+    int T ;
+    cin>>T;
+    while(T--){
+        long long N, even, odd;
+        cin>>N;
+        
+        even = (N+1)/2;
+        odd = (N/2);
+        cout<<even*odd*2<<endl;
+    }
+    return 0;
+}
