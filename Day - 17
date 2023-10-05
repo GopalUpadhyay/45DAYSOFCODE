@@ -1,0 +1,45 @@
+ #include<iostream>
+using namespace std;
+int DigitSum(int N){
+       int sum=0,temp=0;
+       temp = N;
+       while(temp != 0){
+            int flag = temp%10;
+            sum = sum + flag;
+            temp = temp/10;
+       }
+    return sum;
+}
+
+int sumchecking(int num){
+    int sum=0,sum1=0;
+    sum=DigitSum(num);
+    num++;
+    sum1=DigitSum(num);
+    while(true){
+        if((sum%2==0 && sum1%2!=0) || (sum%2!=0 && sum1%2==0)){
+            return num;
+        }
+        else{
+            sum=DigitSum(num);
+            num++;
+            sum1=DigitSum(num);
+            
+
+        }
+    }
+}
+
+int main(){
+        int T;
+        cin>>T;
+        while(T--){
+            int N;
+            cin>>N;
+            DigitSum(N);
+           int Temp = sumchecking(N);
+           cout<<Temp<<endl;
+        }
+    
+    return 0;
+} 
