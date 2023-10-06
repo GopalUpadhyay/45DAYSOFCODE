@@ -1,0 +1,24 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int T;
+    cin>>T;
+    while(T--){
+        int N,M,flag=0;
+        cin>>N>>M;
+        
+        for(int i=N;i<=M;i++){
+            for(int j=1;j<i;j++){
+                if(i % j == 0){
+                    flag++;
+                }
+            }
+            if(flag == 1){
+                cout<<i<<endl;
+            }
+            flag = 0;
+        }
+    }
+	return 0;
+}
