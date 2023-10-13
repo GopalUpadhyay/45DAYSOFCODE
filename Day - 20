@@ -1,0 +1,238 @@
+//Doubly Linked List With Palindrome Checking 
+#include<iostream>
+using namespace std;
+struct Node{
+	int data;
+    struct Node* next;
+    struct Node* prev;
+};
+struct Node* start = NULL;
+
+void InsertAtBegining(){
+	struct Node* newnode =new Node;
+    int data;
+    cout<<"Enter the Data: ";
+    cin>>data;
+    newnode->data = data;
+    
+    if(start == NULL){
+    	start = newnode;
+        newnode -> next = NULL;
+        newnode -> prev = NULL;
+    }
+    else{
+    	newnode -> next = start;
+        newnode -> prev = start -> prev;
+        start -> prev = newnode;
+        start = newnode;
+        cout<<"Node Added Successfully."<<endl;
+    }	
+}
+
+void InsertAtEnd(){
+	struct Node* newnode = new Node;
+    int data;
+    cout<<"Enter The Data: ";
+    cin>>data;
+    newnode -> data = data;
+    
+    if(start == NULL){
+    	start = newnode;
+        newnode -> next = NULL;
+        newnode -> prev = NULL;
+    }
+    else{
+    	struct Node* crrptr = start;
+        while(crrptr -> next != NULL){
+        	crrptr = crrptr -> next;
+        }
+        
+        newnode -> next = crrptr -> next;
+        newnode -> prev = crrptr;
+        crrptr -> next = newnode;
+        cout<<"Node Added Successfully."<<endl;
+    }
+}
+
+void InsertAtPosition(){
+	struct Node* newnode = new Node;
+    int len=1, data, pos;
+    cout<<"Enter The Position: ";
+    cin>>pos;
+    
+    struct Node* crrptr = start;
+    while(crrptr -> next != NULL){
+    	len++;
+        crrptr = crrptr->next;
+    }
+    crrptr = start;
+    
+    if(pos <1 || pos > len+1){
+    	cout<<"Invalid Position."<<endl;
+    }
+    else if(pos == 1){
+    	InsertAtBegining();
+        return;
+    }
+    else if (pos == len+1){
+    	InsertAtEnd();
+        return;
+    }
+    else{
+    	cout<<"Enter The Data: ";
+        cin>>data;
+        newnode -> data = data;
+    	for (int I=0;I<pos-2;I++){
+        	crrptr = crrptr -> next;
+        }
+        newnode -> next = crrptr -> next;
+        newnode -> next -> prev = newnode;
+        crrptr -> next = newnode;
+        newnode -> prev = crrptr;
+        cout<<"Node Added successfully At Given Position."<<endl;
+    }
+}
+
+void DeleteFromBegining(){
+	if (start == NULL){
+    	cout<<"Linked List Doesn't Exist."<<endl;
+    }
+    else{
+    	struct Node* temp = start;
+        start -> next -> prev = start -> prev;
+        start = start -> next;
+        free(temp);
+        cout<<"Node Deleted Successfully From Beginning."<<endl;
+    }
+}
+
+void DeleteFromEnd(){
+	if(start == NULL){
+    	cout<<"Linked List Doesn't Exist."<<endl;
+    }
+    else{
+    	struct Node* temp = start;
+        while(temp -> next != NULL){
+        	temp = temp -> next;
+        }
+        temp -> prev -> next = temp -> next;
+        free(temp);
+        cout<<"Node Deleted successfully From End."<<endl;
+    }
+}
+
+void DeleteFromPosition(){
+	struct Node* temp = start;
+    int pos, len = 1;
+    cout<<"Enter The Position: ";
+    cin>>pos;
+    
+    while(temp -> next != NULL){
+    	len++;
+        temp = temp -> next;
+    }
+    temp = start;
+    
+    if(pos < 1 || pos > len+1){
+    	cout<<"Invalid Position."<<endl;
+    }
+    else if(pos == 1){
+    	DeleteFromBegining();
+        return;
+    }
+    else if(pos == len){
+    	DeleteFromEnd();
+        return;
+    }
+    else{
+    	for(int I=0;I<pos-1;I++){
+        	temp = temp -> next;	
+        }
+        temp->prev->next = temp->next;
+        temp->next->prev = temp->prev;
+        free(temp);
+        cout<<"Node Delete Successfully From Given Position."<<endl;
+    }
+}
+
+int palindrome(){
+    struct Node* b=start;
+    struct Node* l=start;
+    int len=0;
+    while(l -> next != NULL){
+        len++;
+        l = l -> next;
+    }
+    
+   for(int i=0;i<len/2;i++){
+        if(b->data == l->data){
+            b = b -> next;
+            l = l -> prev;
+        }
+        else
+        return 0;
+    }
+    return 1;
+}
+
+void Display(){
+	struct Node* crrptr=start;
+    cout<<"Your Linked List is: ";
+    while(crrptr != NULL){
+    	cout<<crrptr->data<<" ";
+        crrptr=crrptr->next;
+    }
+    cout<<endl;
+}
+
+int main()
+{
+    int choice, temp;
+    while(1){
+    	cout<<endl;
+        cout<<"\n1.Insert At Beginning.";
+        cout<<"\n2.Insert At End.";
+        cout<<"\n3.Insert At Given Position.";
+        cout<<"\n4.Delete From Beginning.";
+        cout<<"\n5.Delete From End.";
+        cout<<"\n6.Delete From Give Position.";
+        cout<<"\n7.Display";
+        cout<<"\n8.Check Palindrome.";
+        cout<<"\n9.Exit.";
+        cout<<"\nEnter Your Choice: ";
+        cin>>choice;
+        
+        switch (choice) {
+        	case 1:
+            	InsertAtBegining();
+                break;
+            case 2:
+            	InsertAtEnd();
+                break;
+            case 3:
+            	InsertAtPosition();
+                break;
+            case 4:
+            	DeleteFromBegining();
+                break;
+            case 5:
+            	DeleteFromEnd();
+                break;
+            case 6:
+            	DeleteFromPosition();
+                break;
+            case 7:
+            	Display();
+                break;
+            case 8:
+                temp = palindrome();
+                cout<<"Palindrome: "<<temp<<endl;
+                break; 
+            case 9:
+            	exit(0);
+            default:
+            	cout<<"Invalid Choice."<<endl;                   
+        }
+    }
+    return 0;
+}
