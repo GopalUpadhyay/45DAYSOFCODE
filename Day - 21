@@ -1,0 +1,32 @@
+//String Permitution.
+
+#include<iostream>
+using namespace std;
+
+void permitution(char arr[],int n,int index){
+    if(index >= n){
+        arr[n] = arr[index];
+        for(int i=0;i<n;i++){
+            cout<<arr[i];
+        }cout<<endl;
+    }
+    for(int i=index;i<n;i++){
+        swap(arr[index],arr[i]);
+        permitution(arr,n,index+1);
+        swap(arr[index],arr[i]);
+    }
+}
+
+int main()
+{    
+    int n,index=0;
+    char arr[100];
+    cout << "Enter size: ";
+    cin>>n;
+    cout<<"Enter string: ";
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
+    }
+    permitution(arr,n,index);
+    return 0;
+}
